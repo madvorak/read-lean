@@ -7,7 +7,32 @@ lemma difference_of_cubes {R : Type} [CommRing R] (x y : R) :
     (x^2 + x*y + y^2) * (x - y) = x^3 - y^3 := by
   ring
 ```
-TODO
+Let's break it down!
+* `lemma` ... keyword; means the same thing as `theorem`
+* `difference_of_cubes` ... the name of the lemma being declared
+* `{R : Type}` ... generic type parameter (there will be some terms of type `R` chosen by the user)
+* `[CommRing R]` ... requirement that `R` must be a commutative ring
+* `(x y : R)` ... `x` and `y` are arguments of type `R` (similar to writing $x, y \in R$ in math)
+* `:` here comes what the lemma says
+* `(x^2 + x*y + y^2) * (x - y) = x^3 - y^3` ... the lemma says $(x^2 + x \cdot y + y^2) \cdot (x - y) = x^3 - y^3$
+* `:=` ... here comes the proof
+* `by` ... the proof will be done by tactic(s)
+* `ring` ... the name of the tactic that generates the proof
+
+The great thing about Lean is that you don't have to trust the implementation of the tactic `ring` in order to believe the result.
+The tactic generates a proof in the underlying system, and the Lean core checks that the proof is a valid derivation in the system
+using existing definitions and existing axioms.
+If there is a bug in the implementation of the tactic `ring` that will lead to generating an incorrect proof, the proof will be
+rejected by the Lean core and the user will be notified.
+As a reader of math written in Lean, you are usually not equipped with a Lean compiler.
+You will typically trust the author that they ran the code through the compiler and no errors were found.
+
+Long story short, you can ignore everything after `:=` when you read a theorem or lemma written in Lean.
+All you need to read to understand the result is
+`{R : Type} [CommRing R] (x y : R) : (x^2 + x*y + y^2) * (x - y) = x^3 - y^3`
+and possibly the definitions and notations used in the statement.
+
+Let's have a look at another lemma!
 
 ```lean
 lemma abs_pow_lt_one_of_abs_lt_one {R : Type} [LinearOrderedRing R]
@@ -15,7 +40,24 @@ lemma abs_pow_lt_one_of_abs_lt_one {R : Type} [LinearOrderedRing R]
     |a ^ n| < 1 :=
   abs_pow a n ▸ pow_lt_one (abs_nonneg a) ha hn
 ```
-TODO
+The declaration is made of similar parts to the previous one.
+* `lemma` ... keyword
+* `abs_pow_lt_one_of_abs_lt_one` ... the name of the lemma being declared
+* `{R : Type}` ... generic type parameter
+* `[LinearOrderedRing R]` ... requirement that `R` must be a linearly ordered ring
+* `{a : R}` ... argument $a \in R$
+* `(ha : |a| < 1)` ... assumption $|a|<1$
+* `{n : ℕ}` ... argument $n \in ℕ$
+* `(hn : n ≠ 0)` ... assumption $n \neq 0$
+* `:` here comes what the lemma says
+* `|a ^ n| < 1` ... the lemma says $|a^n|<1$
+* `:=` ... here comes the proof
+* `abs_pow a n ▸ pow_lt_one (abs_nonneg a) ha hn` ... the proof
+
+The proof refers to the names of the assumptions and uses existing lemmas.
+As you already know, you can ignore the proof (whatever is written after `:=`), hence you can ignore the names `ha` and `hn` as well.
+
+It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
 
 In `Mathlib/Data/Real/Irrational.lean`:
 ```lean
