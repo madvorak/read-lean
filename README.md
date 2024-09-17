@@ -14,7 +14,7 @@ Let's break it down!
 * `difference_of_cubes` ... the name of the lemma being declared
 * `{R : Type}` ... generic type parameter (there will be some terms of type `R` chosen by the user)
 * `[CommRing R]` ... requirement that `R` must be a commutative ring
-* `(x y : R)` ... `x` and `y` are arguments of type `R` (similar to writing $x, y \in R$ in math)
+* `(x y : R)` ... `x` and `y` are arguments of type `R` (similar to writing $x, y \in R$ on paper)
 * `:` here comes what the lemma says
 * `(x^2 + x*y + y^2) * (x - y) = x^3 - y^3` ... the lemma says $(x^2 + x \cdot y + y^2) \cdot (x - y) = x^3 - y^3$
 * `:=` ... here comes the proof
@@ -64,8 +64,8 @@ Note that the first lemma requires `CommRing` (a commutative ring, which needn't
 In Lean, we like to make every lemma as general as possible.
 A part of the reason is that we can make reasoning "by lemma XYZ" but not reasoning "by the proof of lemma XYZ" (as in "follow
 the same steps that the proof of lemma XYZ uses but in a different setting").
-One thing to keep in mind is that, once you publish a lemma about a matrix whose rows are indexed by `Fin n`, e.g. {0, 1, 2, 3},
-you cannot directly apply the lemma to a matrix with rows indexed by {dog, cat, fox, owl}.
+One thing to keep in mind is that, once you publish a lemma about a matrix whose rows are indexed by {0, 1, 2, 3},
+you cannot directly apply the lemma to a matrix whose rows indexed by {dog, cat, fox, owl}.
 Therefore, lemmas about matrices usually come with a type argument saying "this is the set of indices and it must be finite".
 
 It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
