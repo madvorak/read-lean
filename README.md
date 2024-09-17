@@ -70,7 +70,10 @@ Therefore, lemmas about matrices usually come with a type argument saying "this 
 
 It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
 
-In `Mathlib/Data/Real/Irrational.lean`:
+The following theorem in `Mathlib/Data/Real/Irrational.lean` says that `√2` is an irrational number.
+Let us first check the definition.
+We don't define "irrational numbers" as a set; we define "being irrational" as a predicate
+(which is essentially the same thing – both for Lean and for us).
 ```lean
 def Irrational (x : ℝ) :=
   x ∉ Set.range ((↑) : ℚ → ℝ)
@@ -78,9 +81,32 @@ def Irrational (x : ℝ) :=
 theorem irrational_sqrt_two : Irrational (√2) := by
   simpa using Nat.prime_two.irrational_sqrt
 ```
-TODO
+We would like to define irrationals numbers to be the set difference $ℝ - ℚ$.
+Unfortunately, we cannot write it in Lean this way.
+Lean isn't based on set theory. Lean uses type theory.
+Here we cannot say that rational numbers are a subset of real numbers; for example,
+the rational number `5` and the real number `5` are of different types.
+In type theory, rational numbers are embedded in real numbers.
+The operator `↑` denotes this embedding (in face, it could denote several other embeddings,
+hence the explicit type anotation `ℚ → ℝ` is necessary here).
+This operator `↑` takes a rational number and outputs a Cauchy sequence with given rational number on all positions.
+We decide not to go that deep and trust the Mathlib's implementation of number systems and conversions between them.
+We see that `x` is irrational iff `x` isn't in the range of the embedding function, i.e,
+`x` is a real number that doesn't correspond to any rational number.
+We check that it agrees with our intuition what "being irrational" means and go on.
 
-In `Mathlib/Analysis/Complex/Polynomial/Basic.lean`:
+* `theorem` ... keyword
+* `irrational_sqrt_two` ... the name of the theorem being declared
+* `:` here comes what the theorem says
+* `Irrational (√2)` ... the square root of two is irrational
+* `:=` ... here comes the proof
+* `by` ... the proof will be done by tactic(s)
+* `simpa using Nat.prime_two.irrational_sqrt` ... we utilize a theorem "two is a prime" and a theorem "square root of a prime is irrational"
+
+Note that the theorem `irrational_sqrt_two` has no arguments; it says exactly one thing: `√2` is irrational.
+Again, it isn't important what the proof is; Lean checks that the proof is correct.
+
+Let's have a look at a more complicated theorem. In `Mathlib/Analysis/Complex/Polynomial/Basic.lean`:
 ```lean
 theorem exists_root {f : ℂ[X]} (hf : 0 < degree f) : ∃ z : ℂ, IsRoot f z := by
   by_contra! hf'
