@@ -28,7 +28,7 @@ As a reader of math written in Lean, you are usually not equipped with a Lean co
 You will typically trust the author that they ran the code through the compiler and no errors were found.
 
 Long story short, you can ignore everything after `:=` when you read a theorem or lemma written in Lean.
-All you need to read to understand the result is
+All you need to read to understand the lemma is
 `{R : Type} [CommRing R] (x y : R) : (x^2 + x*y + y^2) * (x - y) = x^3 - y^3`
 and possibly the definitions and notations used in the statement.
 
@@ -56,6 +56,15 @@ The declaration is made of similar parts to the previous one.
 
 The proof refers to the names of the assumptions and uses existing lemmas.
 As you already know, you can ignore the proof (whatever is written after `:=`), hence you can ignore the names `ha` and `hn` as well.
+
+Note that the first lemma requires `CommRing` (a commutative ring, which needn't be ordered) whereäs the second lemma requires
+`LinearOrderedRing` (a linearly ordered ring, where multiplication needn't be commutative).
+In Lean, we like to make every lemma as general as possible.
+A part of the reason is that we can make reasoning "by lemma XYZ" but not reasoning "by the proof of lemma XYZ" (as in "follow
+the same steps that the proof of lemma XYZ uses but in a different setting").
+One thing to keep in mind is that, once you publish a lemma about a matrix whose rows are indexed by `Fin n`, e.g. {0, 1, 2, 3},
+you cannot directly apply the lemma to a matrix with rows indexed by {dog, cat, fox, owl}.
+Therefore, lemmas about matrices usually come with a type argument saying "this is the set of indices and it must be finite".
 
 It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
 
