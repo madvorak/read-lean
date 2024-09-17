@@ -2,6 +2,8 @@
 
 Here we will teach you how to read math written in Lean.
 
+Let's review an easy lemma we know from the middle school (even tho we probably didn't call it "lemma" back then).
+
 ```lean
 lemma difference_of_cubes {R : Type} [CommRing R] (x y : R) :
     (x^2 + x*y + y^2) * (x - y) = x^3 - y^3 := by
@@ -27,7 +29,7 @@ rejected by the Lean core and the user will be notified.
 As a reader of math written in Lean, you are usually not equipped with a Lean compiler.
 You will typically trust the author that they ran the code through the compiler and no errors were found.
 
-Long story short, you can ignore everything after `:=` when you read a theorem or lemma written in Lean.
+Long story short, you can ignore everything after `:=` when you read a theorem written in Lean.
 All you need to read to understand the lemma is
 `{R : Type} [CommRing R] (x y : R) : (x^2 + x*y + y^2) * (x - y) = x^3 - y^3`
 and possibly the definitions and notations used in the statement.
