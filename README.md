@@ -65,7 +65,7 @@ In Lean, we like to make every lemma as general as possible.
 A part of the reason is that we can make reasoning "by lemma XYZ" but not reasoning "by the proof of lemma XYZ" (as in "follow
 the same steps that the proof of lemma XYZ uses but in a different setting").
 One thing to keep in mind is that, once you publish a lemma about a matrix with rows indexed by {0, 1, 2, 3},
-you cannot directly apply the lemma to a matrix with rows indexed by {dog, cat, fox, owl}.
+the user cannot directly apply the lemma to a matrix with rows indexed by {dog, cat, fox, owl}.
 Therefore, lemmas about matrices usually come with a type argument saying "this is the set of indices and it must be finite".
 
 It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
