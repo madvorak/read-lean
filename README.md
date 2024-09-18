@@ -87,8 +87,8 @@ Lean isn't based on set theory. Lean uses type theory.
 Here we cannot say that rational numbers are a subset of real numbers; for example,
 the rational number `5` and the real number `5` are of different types.
 In type theory, rational numbers are embedded in real numbers.
-The operator `↑` denotes this embedding (in face, it could denote several other embeddings,
-hence the explicit type anotation `ℚ → ℝ` is necessary here).
+The operator `↑` denotes this embedding (in fact, it could denote several other embeddings,
+hence the explicit type annotation `ℚ → ℝ` is necessary here).
 This operator `↑` takes a rational number and outputs a Cauchy sequence with given rational number on all positions.
 We decide not to go that deep and trust the Mathlib's implementation of number systems and conversions between them.
 We see that `x` is irrational iff `x` isn't in the range of the embedding function, i.e,
