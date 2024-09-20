@@ -121,7 +121,18 @@ theorem exists_root {f : ℂ[X]} (hf : 0 < degree f) : ∃ z : ℂ, IsRoot f z :
   obtain rfl : f = C 0 := Polynomial.funext fun z ↦ inv_injective <| by simp [this]
   simp at hf
 ```
+
 TODO
+* `theorem` ... keyword
+* `exists_root` ... the name of the theorem being declared
+* `{f : ℂ[X]}` ... argument `f` that is a complex polynomial
+* `(hf : 0 < degree f)` ... assumption that the degree of `f` is strictly positive
+* `:` here comes what the theorem says
+* `∃ z : ℂ, IsRoot f z` ... there is a complex number `z` that is a root of `f`
+* `:=` ... here comes the proof
+
+Then a rather complicated proof follows.
+Note that `--` starts a single-line comment whereäs `/- comment -/` can be of any length.
 
 In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
 ```lean
