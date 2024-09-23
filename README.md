@@ -42,7 +42,7 @@ lemma abs_pow_lt_one_of_abs_lt_one {R : Type} [LinearOrderedRing R]
     |a ^ n| < 1 :=
   abs_pow a n ▸ pow_lt_one (abs_nonneg a) ha hn
 ```
-The declaration is made of similar parts to the previous one.
+The declaration is made of similar parts to the previous.
 * `lemma` ... keyword
 * `abs_pow_lt_one_of_abs_lt_one` ... the name of the lemma being declared
 * `{R : Type}` ... generic type parameter
@@ -68,7 +68,15 @@ One thing to keep in mind is that, once you publish a lemma about a matrix with 
 the user cannot directly apply the lemma to a matrix with rows indexed by {dog, cat, fox, owl}.
 Therefore, lemmas about matrices usually come with a type argument saying "this is the set of indices and it must be finite".
 
-It is time to explain the difference between `(term : type)` and `{term : type}` TODO.
+It is time to explain the difference between `(term : type)` and `{term : type}` in declarations.
+The former is an explicit argument (which is supposed to be written when calling the lemma).
+The latter is an implicit argument (it is automatically inferred from other arguments when calling the lemma,
+unless the user writes `@` to make all arguments explicit).
+It is especially important to distinguish between explicit arguments and implicit arguments in definitions.
+If we declare a function `def foo {x y : ℝ} (z : ℝ) (hxy : x < y) :` followed by a type of the output
+and the body, calling it as `foo 3 myproof` means that `z` is `3` and values of `x` and `y` are inferred
+from the argument `myproof` which carries the information that `x` is less than `y` (and hence determines
+their values as well).
 
 The following theorem in `Mathlib/Data/Real/Irrational.lean` says that `√2` is an irrational number.
 Let us first check the definition.
@@ -94,7 +102,6 @@ We decide not to go that deep and trust the Mathlib's implementation of number s
 We see that `x` is irrational iff `x` isn't in the range of the embedding function, i.e,
 `x` is a real number that doesn't correspond to any rational number.
 We check that it agrees with our intuition what "being irrational" means and go on.
-
 * `theorem` ... keyword
 * `irrational_sqrt_two` ... the name of the theorem being declared
 * `:` here comes what the theorem says
@@ -122,10 +129,10 @@ theorem exists_root {f : ℂ[X]} (hf : 0 < degree f) : ∃ z : ℂ, IsRoot f z :
   simp at hf
 ```
 
-TODO
+This is the fundamental theorem of algebra!
 * `theorem` ... keyword
 * `exists_root` ... the name of the theorem being declared
-* `{f : ℂ[X]}` ... argument `f` that is a complex polynomial
+* `{f : ℂ[X]}` ... argument `f` that is a complex polynomial in single variable `X`
 * `(hf : 0 < degree f)` ... assumption that the degree of `f` is strictly positive
 * `:` here comes what the theorem says
 * `∃ z : ℂ, IsRoot f z` ... there is a complex number `z` that is a root of `f`
