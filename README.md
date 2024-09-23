@@ -74,9 +74,9 @@ The latter is an implicit argument (it is automatically inferred from other argu
 unless the user writes `@` to make all arguments explicit).
 It is especially important to distinguish between explicit arguments and implicit arguments in definitions.
 If we declare a function `def foo {x y : ℝ} (z : ℝ) (hxy : x < y) :` followed by a type of the output
-and the body, calling it as `foo 3 myproof` means that `z` is `3` and values of `x` and `y` are inferred
-from the argument `myproof` which carries the information that `x` is less than `y` (and hence determines
-their values as well).
+and the body, calling it as `foo 3 myproof` means that `z` is the real number `3` and that the values of `x` and `y`
+are inferred from the argument `myproof` which carries the information that `x` is less than `y`
+(and thereby makes their values possible to infer).
 
 The following theorem in `Mathlib/Data/Real/Irrational.lean` says that `√2` is an irrational number.
 Let us first check the definition.
@@ -140,6 +140,8 @@ This is the fundamental theorem of algebra!
 
 Then a rather complicated proof follows.
 Note that `--` starts a single-line comment whereäs `/- comment -/` can be of any length.
+As we already know, nothing after `:=` needs to be read by us if we want to use the theorem
+or just be informed what theorem has been formally verified.
 
 In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
 ```lean
