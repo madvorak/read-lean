@@ -143,7 +143,7 @@ Note that `--` starts a single-line comment whereäs `/- comment -/` can be of a
 As we already know, nothing after `:=` needs to be read by us if we want to use the theorem
 or just be informed what theorem has been formally verified.
 
-In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
+Let's review one more theorem theorem. In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
 ```lean
 theorem norm_inner_le_norm {𝕜 E : Type*} [RCLike 𝕜] [SeminormedAddCommGroup E]
     [InnerProductSpace 𝕜 E] (x y : E) :
@@ -152,4 +152,15 @@ theorem norm_inner_le_norm {𝕜 E : Type*} [RCLike 𝕜] [SeminormedAddCommGrou
   letI : PreInnerProductSpace.Core 𝕜 E := PreInnerProductSpace.toCore
   exact InnerProductSpace.Core.norm_inner_le_norm x y
 ```
-TODO
+
+This is the Cauchy-Schwarz inequality!
+* `theorem` ... keyword
+* `norm_inner_le_norm` ... the name of the theorem being declared
+* `{𝕜 E : Type*}` ... the theorem uses some types `𝕜` and `E`
+* `[RCLike 𝕜]` ... `𝕜` is either ℝ or ℂ
+* `[SeminormedAddCommGroup E]` ... `E` forms an abelian group with a pseudometric space structure
+* `[InnerProductSpace 𝕜 E]` ... `E` forms a vector space over `𝕜`, with an inner product that induces the norm
+* `(x y : E)` ... the only explicit arguments of this theorem (everything else should be inferred from them when the theorem is used)
+* `:` here comes what the theorem says
+* `‖⟪x, y⟫‖ ≤ ‖x‖ * ‖y‖` ... the norm of the inner product of two vectors is less or equal to the product of respective norms
+* `:=` ... here comes the proof
