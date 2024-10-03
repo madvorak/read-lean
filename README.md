@@ -90,15 +90,13 @@ theorem irrational_sqrt_two : Irrational (√2) := by
   simpa using Nat.prime_two.irrational_sqrt
 ```
 We would like to define irrationals numbers to be the set difference $ℝ - ℚ$.
-Unfortunately, we cannot write it in Lean this way.
-Lean isn't based on set theory. Lean uses type theory.
-Here we cannot say that rational numbers are a subset of real numbers; for example,
+Unfortunately, we cannot quite write it this way in Lean.
+Lean isn't based on set theory; Lean uses type theory.
+Therefore, we cannot say that rational numbers are a subset of real numbers; for example,
 the rational number `5` and the real number `5` are of different types.
-In type theory, rational numbers are embedded in real numbers.
-The operator `↑` denotes this embedding (in fact, it could denote several other embeddings,
-hence the explicit type annotation `ℚ → ℝ` is necessary here).
-This operator `↑` takes a rational number and outputs a Cauchy sequence with given rational number on all positions.
-We decide not to go that deep and trust the Mathlib's implementation of number systems and conversions between them.
+Instead, rational numbers are embedded in real numbers (each rational number corresponds to a unique real number).
+In our example, the operator `↑` denotes this embedding (in fact, it could denote several other embeddings,
+thus the explicit type annotation `ℚ → ℝ` is necessary).
 We see that `x` is irrational iff `x` isn't in the range of the embedding function, i.e,
 `x` is a real number that doesn't correspond to any rational number.
 We check that it agrees with our intuition what "being irrational" means and go on.
