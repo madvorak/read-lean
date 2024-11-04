@@ -158,7 +158,5 @@ This is the Cauchy-Schwarz inequality!
 * `[RCLike 𝕜]` ... `𝕜` is either ℝ or ℂ
 * `[SeminormedAddCommGroup E]` ... `E` forms an abelian group with a pseudometric space structure
 * `[InnerProductSpace 𝕜 E]` ... `E` forms a vector space over `𝕜`, with an inner product that induces the norm
-* `(x y : E)` ... the only explicit arguments of this theorem (everything else should be inferred from them when the theorem is used)
-* `:` here comes what the theorem says
-* `‖⟪x, y⟫‖ ≤ ‖x‖ * ‖y‖` ... the norm of the inner product of two vectors is less or equal to the product of respective norms
+* `(x y : E) : ‖⟪x, y⟫‖ ≤ ‖x‖ * ‖y‖` ... the norm of the inner product of two vectors is less or equal to the product of respective norms
 * `:=` ... here comes the proof
