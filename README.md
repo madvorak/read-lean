@@ -141,7 +141,7 @@ Note that `--` starts a single-line comment whereäs `/- comment -/` can be of a
 As we already know, nothing after `:=` needs to be read by us if we want to use the theorem
 or just be informed what theorem has been formally verified.
 
-Let's review one more theorem theorem. In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
+Let's review one more theorem. In `Mathlib/Analysis/InnerProductSpace/Basic.lean`:
 ```lean
 theorem norm_inner_le_norm {𝕜 E : Type*} [RCLike 𝕜] [SeminormedAddCommGroup E]
     [InnerProductSpace 𝕜 E] (x y : E) :
