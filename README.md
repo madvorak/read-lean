@@ -97,6 +97,8 @@ the rational number `5` and the real number `5` are of different types.
 Instead, rational numbers are embedded in real numbers (each rational number corresponds to a unique real number).
 In our example, the operator `↑` denotes this embedding (in fact, it could denote several other embeddings,
 thus the explicit type annotation `ℚ → ℝ` is necessary).
+This concrete embedding `(↑) : ℚ → ℝ` takes a rational number and outputs a Cauchy sequence with given rational number on all positions.
+We decide not to go that deep and trust the Mathlib's implementation of number types and conversions between them.
 We see that `x` is irrational iff `x` isn't in the range of the embedding function, i.e,
 `x` is a real number that doesn't correspond to any rational number.
 We check that it agrees with our intuition what "being irrational" means and go on.
@@ -160,3 +162,18 @@ This is the Cauchy-Schwarz inequality!
 * `[InnerProductSpace 𝕜 E]` ... `E` forms a vector space over `𝕜`, with an inner product that induces the norm
 * `(x y : E) : ‖⟪x, y⟫‖ ≤ ‖x‖ * ‖y‖` ... the norm of the inner product of two vectors is less or equal to the product of respective norms
 * `:=` ... here comes the proof
+
+## Additional tips
+
+It is better to read Lean in an IDE than in a web browser.
+The best IDE for Lean 4 is [VS Code](https://code.visualstudio.com/).
+
+Get a nice font! If the code looks elegant and unobtrusive on your screen and doesn't strain your eyes,
+you will eventually stop feeling the need to switch from reading Lean to reading PDFs again.
+It is important for your font to have good Unicode support.
+If any of the Unicode characters present in the code is missing, your computer will default to other installed fonts,
+and the given symbol will probably look disproportionate among the rest of the symbols.
+Good example is [JuliaMono](https://juliamono.netlify.app/#) because it has great Unicode support and the text looks pretty natural.
+
+Get a nice but unobtrusive lexical highlighting (or syntax highlighting, if it is your thing; also semantic highlighting exists).
+My personal recommendation is [here](https://github.com/madvorak/vscode-lean4-colors).
